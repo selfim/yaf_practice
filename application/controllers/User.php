@@ -29,4 +29,41 @@ class UserController extends Yaf_Controller_Abstract {
 		
 		return false;
 	}
+
+	public function indexAction(){
+		return $this->loginAction();
+	}
+
+	public function loginAction(){
+		
+	}
+
+	public function registerAction(){
+		//获取参数
+		$name = $this->getRequest()->getPost('name',false);
+		$pwd = $this->getRequest()->getPost('pwd',false);
+		if(!$name || !$pwd){
+			echo json_encode(array("code"=>-100,"msg"=>"用户名和密码必填"));
+			return false;
+		}
+
+		//调用model 登录验证
+		$model = new UserModel();
+		$info = $model->register(trim($name),trim($pwd));
+		if($info){
+			echo json_encode(array(
+				"code"=>0,
+				"msg"=>"",
+				"data"=>array(
+				  "name"=>$name
+				)
+			));
+		}else{
+			echo json_encode(array(
+				"code"=>$model->code,
+				"msg"=>$model->msg,
+			));
+		}
+		return TRUE;
+	}
 }
