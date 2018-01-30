@@ -2,7 +2,7 @@
 /**
  * @name UserleModel
  * @desc User数据获取类, 可以访问数据库，文件，其它系统等
- * @author limeng\limeng
+ * @author leo
  */
 class UserModel {
 	public $code =0;
@@ -11,7 +11,23 @@ class UserModel {
     public function __construct() {
 		$this->_db = new PDO("mysql:host=127.0.0.1;dbname=yafdemo;","root","123456");
     }
-	
+	public function login($name,$pwd){
+		$sql = $this->_db->prepare("select `pwd`,`id` from `user` where `name`= ? ");
+		$sql->execute(array($name));
+		$rst = $sql->fetchAll();
+		if(!$rst||count($rst)!=1){
+			$this->code = -104;
+			$this->msg = "用户查找失败！";
+			return FALSE;
+		}
+		$userInfo = $rst[0];
+		if($this->_genPass($pwd)!=$userInfo['pwd']){
+			$this->code = -105;
+			$this->msg = "密码错误！";
+			return FALSE;
+		}
+		return intval($userInfo[1]);
+	}
 	public function register($name,$pwd){
 		$sql = $this->_db->prepare("select count(*) as count from `user` where `name`= ? ");
 		$sql->execute(array($name));
