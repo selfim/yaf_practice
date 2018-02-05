@@ -30,7 +30,7 @@ class SmsModel {
 		}
 		
 		$smsUid ='leo1128';
-		$smsPwd ='leo276856674';
+		$smsPwd ='xxxxx';
 		$smsobj = new ThirdParty_Sms($smsUid,$smsPwd);
 		
 		$contentParam = array('code'=>mt_rand(1000,9999));
