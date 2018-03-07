@@ -36,7 +36,7 @@ class UserController extends Yaf_Controller_Abstract {
 	//登录api实现
 	public function loginAction(){
 		//防爬虫
-		$submit = $this->getRequest()->getQuery("submit","0");
+		$submit = $this->getRequest()->getQuery("submit","0");//通过submit入参 默认值为0
 		if($submit!="1"){
 			echo json_encode(array('code'=>-104,'msg'=>"请通过正确方式提交！"));
 			return FALSE;
@@ -55,12 +55,12 @@ class UserController extends Yaf_Controller_Abstract {
 		$info = $model->login(trim($name),trim($pwd));
 		if($info){
 			//SESSION
-			/**
+			
 			session_start();
 			$_SESSION['user_token'] = md5("SALT".$_SERVER['REQUEST_TIME'].$info);
 			$_SESSION['user_token_time'] = $_SERVER['REQUEST_TIME'];
 			$_SESSION['user_id'] = $info;
-			*/
+			
 			echo json_encode(array(
 				"code"=>0,
 				"msg"=>"",
@@ -75,7 +75,7 @@ class UserController extends Yaf_Controller_Abstract {
 				"msg"=>$model->msg,
 			));
 		}
-		return TRUE;
+		return false;
 	}
 
 	public function registerAction(){
@@ -104,6 +104,6 @@ class UserController extends Yaf_Controller_Abstract {
 				"msg"=>$model->msg,
 			));
 		}
-		return TRUE;
+		return false;
 	}
 }

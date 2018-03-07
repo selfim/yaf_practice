@@ -42,7 +42,7 @@ class MailController extends Yaf_Controller_Abstract {
 				"msg"=>$model->msg,
 			));
 		}
-		return TRUE;
+		return false;
 	}
 
 }

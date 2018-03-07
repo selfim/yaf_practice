@@ -38,7 +38,7 @@ class MailModel {
 		$mailer = new Nette\Mail\SmtpMailer([
 				'host' => 'smtp.qq.com',
 				'username' => '276856674@qq.com',
-				'password' => 'nowlpldposlybjhj', /* smtp独立密码 */
+				'password' => 'xxxxxxx', /* smtp独立密码 */
 				'secure' => 'ssl',
 		]);
 		$rep = $mailer->send($mail);
