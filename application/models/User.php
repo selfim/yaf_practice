@@ -9,7 +9,7 @@ class UserModel {
 	public $msg = "";
 	private $_db = null;
     public function __construct() {
-		$this->_db = new PDO("mysql:host=127.0.0.1;dbname=yafdemo;","root","123456");
+		$this->_db = new PDO("mysql:host=127.0.0.1;dbname=yafdemo;","root","root");
     }
 	public function login($name,$pwd){
 		$sql = $this->_db->prepare("select `pwd`,`id` from `user` where `name`= ? ");
