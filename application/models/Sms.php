@@ -10,7 +10,7 @@ class SmsModel {
 	public $msg = "";
 	private $_db = null;
     public function __construct() {
-		$this->_db = new PDO("mysql:host=127.0.0.1;dbname=yafdemo;","root","123456");
+		$this->_db = new PDO("mysql:host=127.0.0.1;dbname=yafdemo;","root","root");
     }
 
 	public function send($uid,$templateId){
@@ -30,7 +30,7 @@ class SmsModel {
 		}
 		
 		$smsUid ='leo1128';
-		$smsPwd ='xxxxx';
+		$smsPwd ='xxxx';
 		$smsobj = new ThirdParty_Sms($smsUid,$smsPwd);
 		
 		$contentParam = array('code'=>mt_rand(1000,9999));
@@ -38,6 +38,18 @@ class SmsModel {
 		$template = $templateId;
 		$result = $smsobj->send($userMobile,$contentParam,$template);
 		if($result['stat']=='100'){
+		    //增加发送记录
+            $query = $this->_db->prepare("insert into `sms_record` (`uid`,`contents`,`template`) VALUES ( ?, ?, ? )");
+            $ret = $query->execute( array($uid, json_encode($contentParam), $template) );
+            if( !$ret ){
+                /**
+                 * TODO 应该返回true还是false，有待商榷
+                 */
+                $this->errno = -112;
+                $this->errmsg = '消息发送成功，但发送记录失败。';
+                return false;
+            }
+            return true;
 			return TRUE;
 		}else{
 			$this->code = -111;

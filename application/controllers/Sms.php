@@ -41,5 +41,9 @@ class SmsController extends Yaf_Controller_Abstract {
 		}
 		return false;
 	}
-
+    //批量发送短信
+    public function batchSendSms()
+    {
+        //TODO
+    }
 }
