@@ -101,7 +101,7 @@ class NewsController extends Yaf_Controller_Abstract {
 			return FALSE;
 		}
 		//传入参数
-		$newsId = $this->getRequest()->getQuery('newsId',false);#get方式获取
+		$newsId = $this->getRequest()->getQuery('newsId','0');#url get方式获取
 		$status = $this->getRequest()->getQuery('status','offline');
 		if(is_numeric($newsId)&&$newsId){
 			$model = new NewsModel();
@@ -125,10 +125,53 @@ class NewsController extends Yaf_Controller_Abstract {
 	}
 	//详情
 	public function getAction(){
+        #传入参数
+		$newsId = $this->getRequest()->getQuery('newsId','0');#url get方式获取
+
+		if(is_numeric($newsId)&&$newsId){
+            $model = new NewsModel();
+            if($data = $model->get($newsId)){
+                echo json_encode(array(
+                    "errno"=>0,
+                    "errmsg"=>"",
+                    "data"=>$data,
+                ));
+            }else{
+                echo json_encode(array(
+                    "errno"=>$model->errno,
+                    "errmsg"=>$model->errmsg,
+                ));
+            }
+
+        }else{
+            echo json_encode(array("code"=>-2003,"msg"=>"参数错误"));
+
+        }
 		return FALSE;
 	}
 	//分页 列表
 	public function listAction(){
+	    //参数
+        $pageNo = $this->getRequest()->getQuery( "pageNo", "0" );
+        $pageSize = $this->getRequest()->getQuery( "pageSize", "10" );
+        $cate = $this->getRequest()->getQuery( "cate", "0" );
+        $status = $this->getRequest()->getQuery( "status", "online" );
+
+        $model = new NewsModel();
+        if($data = $model->listfunc($pageNo,$pageSize,$cate,$status)){
+            echo json_encode( array(
+                "errno"=>0,
+                "errmsg"=>"",
+                "data"=>$data,
+            ));
+
+        }else{
+            echo json_encode(array(
+                "errno"=>$model->errno,
+                "errmsg"=>$model->errmsg,
+            ));
+
+        }
 		return FALSE;
 	}
 	//检测是否是管理员
