@@ -55,7 +55,7 @@ class NewsController extends Yaf_Controller_Abstract {
 			return FALSE;
 		}
 		//获取参数
-		$newsId = $this->getRequest()->getPost('newsId',false);
+		$newsId = $this->getRequest()->getQuery('newsId',false);
 		if(is_numeric($newsId)&&$newsId){
 			return $this->addAction($newsId);
 		}else{
@@ -66,11 +66,61 @@ class NewsController extends Yaf_Controller_Abstract {
 	}
 	#删除文章
 	public function delAction(){
-	    
+		if(!$this->_isAdmin()){//权限校验
+			echo json_encode(array("errno"=>-2000,"errmsg"=>"非管理员不能操作！"));
+			return FALSE;
+		}
+		//传入参数
+		$newsId = $this->getRequest()->getQuery('newsId',false);
+		if(is_numeric($newsId)&&$newsId){
+			$model = new NewsModel();
+			if($model->del($newsId)){
+				echo json_encode(array(
+					"errno"=>0,
+					"errmsg"=>"",
+				));
+			}else{
+				echo json_encode(array(
+					"errno"=>$model->errno,
+					"errmsg"=>$model->errmsg,
+				));
+			}
+		
+		}else{
+			echo json_encode(array("code"=>-2003,"msg"=>"参数错误"));
+		
+		}
+
 		return FALSE;
 	}
-	
+	#发布文章
 	public function statusAction(){
+		//权限校验
+		if(!$this->_isAdmin()){
+			echo json_encode(array("errno"=>-2000,"errmsg"=>"非管理员不能操作！"));
+			return FALSE;
+		}
+		//传入参数
+		$newsId = $this->getRequest()->getQuery('newsId',false);#get方式获取
+		$status = $this->getRequest()->getQuery('status','offline');
+		if(is_numeric($newsId)&&$newsId){
+			$model = new NewsModel();
+			if($model->status($newsId,$status)){
+				echo json_encode(array(
+					"errno"=>0,
+					"errmsg"=>"",
+				));
+			}else{
+				echo json_encode(array(
+					"errno"=>$model->errno,
+					"errmsg"=>$model->errmsg,
+				));
+			}
+		
+		}else{
+			echo json_encode(array("code"=>-2003,"msg"=>"参数错误"));
+		
+		}
 		return FALSE;
 	}
 	//详情
@@ -85,5 +135,10 @@ class NewsController extends Yaf_Controller_Abstract {
 	private function _isAdmin()
 	{
 		return true;
+	}
+	//PHPExceltest
+	public function testAction()
+	{
+		
 	}
 }

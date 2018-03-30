@@ -70,4 +70,30 @@ class NewsModel {
 
 	}
 	
+	#删除操作
+	public function del($newsId){
+		$sql = $this->_db->prepare("DELETE FROM `art` WHERE `id` =?");
+		$ret = $sql->execute(array(intval($newsId)));
+		if(!$ret){
+			$this->errno = -2007;
+			$this->errmsg = "删除失败！ErrorInfo:".end($sql->errorInfo());
+			return false;
+		}
+		return true;
+	}
+	
+	#
+	public function status($newsId,$status='offline')
+	{
+		$sql = $this->_db->prepare("UPDATE `art` SET `status`=？ WHERE `id` =?");
+		$ret = $sql->execute(array($status,intval($newsId)));
+		if(!$ret){
+			$this->errno = -2008;
+			$this->errmsg = "更新文章状态失败！ErrorInfo:".end($sql->errorInfo());
+			return false;
+		}
+		return true;
+		
+	}
+	
 }
