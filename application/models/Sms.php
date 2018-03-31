@@ -49,7 +49,6 @@ class SmsModel {
                 $this->errmsg = '消息发送成功，但发送记录失败。';
                 return false;
             }
-            return true;
 			return TRUE;
 		}else{
 			$this->code = -111;
