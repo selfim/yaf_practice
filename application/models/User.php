@@ -4,6 +4,7 @@
  * @desc User数据获取类, 可以访问数据库，文件，其它系统等
  * @author leo
  */
+require_once(__DIR__.'/../library/ThirdParty/PHPExcel.php');
 class UserModel {
 	public $code =0;
 	public $msg = "";
@@ -58,4 +59,9 @@ class UserModel {
 	private function _genPass($password){
 		return md5("sUA78$^P0".$password);
 	}
+	//PHPExcel导出用户
+	public function exportUser()
+    {
+
+    }
 }

@@ -5,6 +5,7 @@
  * @desc 默认控制器
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
+
 class UserController extends Yaf_Controller_Abstract {
 
 	/** 
@@ -15,10 +16,16 @@ class UserController extends Yaf_Controller_Abstract {
 	public function RegAction($name = "User Reg") {
 		//1. fetch query
 		$get = $this->getRequest()->getQuery("get", "default value");
-
+        $submit = $this->getRequest()->getQuery("submit","0");//通过submit入参 默认值为0
+        if($submit!="1"){
+            echo json_encode(array('code'=>-104,'msg'=>"请通过正确方式提交！"));
+            return FALSE;
+        }
 		//2. fetch model
 		$model = new SampleModel();
-		var_dump($name);
+		#$phpexcelModel = new PHPExcel();
+
+		var_dump($model);
 		/**
 		//3. assign
 		$this->getView()->assign("content", $model->selectSample());
