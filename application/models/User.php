@@ -62,6 +62,8 @@ class UserModel {
 	//PHPExcel导出用户
 	public function exportUser()
     {
+        $phpexcelModel = new PHPExcel();
 
+        var_dump($phpexcelModel);
     }
 }
