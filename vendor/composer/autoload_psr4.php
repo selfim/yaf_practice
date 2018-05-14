@@ -6,4 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Workerman\\' => array($vendorDir . '/workerman/workerman'),
+    'QL\\' => array($vendorDir . '/jaeger/querylist'),
+    'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),
 );

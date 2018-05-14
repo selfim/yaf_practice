@@ -2,7 +2,12 @@
     "require": {
         "php": ">=5.5.9",
         "phpmailer/phpmailer": "~5.2",
-        "nette/mail": "^2.3"
+        "nette/mail": "^2.3",
+        "curl/curl": "^1.8",
+        "aferrandini/phpqrcode": "^1.0",
+        "jaeger/querylist": "V3.2.1",
+        "workerman/workerman": "^3.5",
+        "catfan/medoo": "^1.5"
     },
     "config": {
         "preferred-install": "dist"

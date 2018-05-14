@@ -43,9 +43,11 @@ class UserController extends Yaf_Controller_Abstract {
 	//登录api实现
 	public function loginAction(){
 		//防爬虫
-		$submit = $this->getRequest()->getQuery("submit","0");//通过submit入参 默认值为0
+		//$submit = $this->getRequest()->getQuery("submit","0");//通过submit入参 默认值为0
+		$submit =Common_Request::getRequest("submit","0");//通过submit入参 默认值为0
 		if($submit!="1"){
-			echo json_encode(array('code'=>-104,'msg'=>"请通过正确方式提交！"));
+			//echo json_encode(array('code'=>-104,'msg'=>"请通过正确方式提交！"));
+			echo Common_Request::response(-104,"请通过正确方式提交！");
 			return FALSE;
 		}
 

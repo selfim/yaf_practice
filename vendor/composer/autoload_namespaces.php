@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PHPQRCode' => array($vendorDir . '/aferrandini/phpqrcode/lib'),
+    'Curl' => array($vendorDir . '/curl/curl/src'),
 );

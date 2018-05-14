@@ -1,5 +1,5 @@
 <?php
-//加上下面这一句话，用于自动加载QueryList
+//引入自动加载类
 require 'vendor/autoload.php';
 define('APPLICATION_PATH', dirname(__FILE__));
 

@@ -4,7 +4,7 @@
  * @desc Mail数据获取类, 可以访问数据库，文件，其它系统等
  * @author leo
  */
-require_once(__DIR__.'/../../vendor/autoload.php');
+#require_once(__DIR__.'/../../vendor/autoload.php');
 use Nette\Mail\Message;
 class MailModel {
 	public $code =0;
@@ -38,7 +38,7 @@ class MailModel {
 		$mailer = new Nette\Mail\SmtpMailer([
 				'host' => 'smtp.qq.com',
 				'username' => '276856674@qq.com',
-				'password' => 'xxxxxxx', /* smtp独立密码 */
+				'password' => 'bphststxxgnccacj', /* smtp独立密码 */
 				'secure' => 'ssl',
 		]);
 		$rep = $mailer->send($mail);
