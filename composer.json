@@ -7,7 +7,12 @@
         "aferrandini/phpqrcode": "^1.0",
         "jaeger/querylist": "V3.2.1",
         "workerman/workerman": "^3.5",
-        "catfan/medoo": "^1.5"
+	"illuminate/database": "5.0.*",
+        "illuminate/events": "5.0.*",
+        "symfony/debug": "2.6.*",
+        "symfony/var-dumper": "2.6.*",
+        "catfan/medoo": "^1.5",
+        "pfinal/excel": "^1.1"
     },
     "config": {
         "preferred-install": "dist"

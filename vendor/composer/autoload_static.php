@@ -6,18 +6,44 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360
 {
+    public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
+        '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        '9f7f3f9b1f82484e76bcd07b985a2d2f' => __DIR__ . '/..' . '/symfony/var-dumper/Symfony/Component/VarDumper/Resources/functions/dump.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
             'Workerman\\' => 10,
         ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Translation\\' => 30,
+            'Stringy\\' => 8,
+        ),
         'Q' => 
         array (
             'QL\\' => 3,
         ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+            'PFinal\\Excel\\' => 13,
+        ),
         'M' => 
         array (
             'Medoo\\' => 6,
+        ),
+        'I' => 
+        array (
+            'Illuminate\\Support\\' => 19,
+            'Illuminate\\Events\\' => 18,
+            'Illuminate\\Database\\' => 20,
+            'Illuminate\\Contracts\\' => 21,
+            'Illuminate\\Container\\' => 21,
         ),
     );
 
@@ -26,22 +52,88 @@ class ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360
         array (
             0 => __DIR__ . '/..' . '/workerman/workerman',
         ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+        'Stringy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/danielstjules/stringy/src',
+        ),
         'QL\\' => 
         array (
             0 => __DIR__ . '/..' . '/jaeger/querylist',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'PFinal\\Excel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pfinal/excel/src',
         ),
         'Medoo\\' => 
         array (
             0 => __DIR__ . '/..' . '/catfan/medoo/src',
         ),
+        'Illuminate\\Support\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/support',
+        ),
+        'Illuminate\\Events\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/events',
+        ),
+        'Illuminate\\Database\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/database',
+        ),
+        'Illuminate\\Contracts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/contracts',
+        ),
+        'Illuminate\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/container',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Symfony\\Component\\VarDumper\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/symfony/var-dumper',
+            ),
+            'Symfony\\Component\\Debug\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/symfony/debug',
+            ),
+        ),
         'P' => 
         array (
             'PHPQRCode' => 
             array (
                 0 => __DIR__ . '/..' . '/aferrandini/phpqrcode/lib',
+            ),
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Common\\Inflector\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
         ),
         'C' => 
@@ -116,6 +208,8 @@ class ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360
         'PHPMailerOAuthGoogle' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.phpmaileroauthgoogle.php',
         'POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.pop3.php',
         'SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/class.smtp.php',
+        'XLSXWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
+        'XLSXWriter_BuffererWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
         'ntlm_sasl_client_class' => __DIR__ . '/..' . '/phpmailer/phpmailer/extras/ntlm_sasl_client.php',
         'phpQuery' => __DIR__ . '/..' . '/jaeger/phpquery-single/phpQuery.php',
         'phpQueryEvents' => __DIR__ . '/..' . '/jaeger/phpquery-single/phpQuery.php',
@@ -129,6 +223,7 @@ class ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitc0007083bd2b65a5b5f592a8f4ab1360::$classMap;
 

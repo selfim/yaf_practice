@@ -5,6 +5,8 @@
  * @desc 默认控制器
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
+
+
 class IndexController extends Yaf_Controller_Abstract {
     public  function  init(){
 
@@ -72,6 +74,17 @@ class IndexController extends Yaf_Controller_Abstract {
     public function getparAction(){
         $params = $this->getRequest()->getParams();
         var_dump($params);
+
+    }
+	public function ormtestAction(){
+		Yaf_Dispatcher::getInstance()->disableView(); 
+		$mod = new UserModel(); 
+		p($mod);
+	}
+	public function exportAction(){
+        Yaf_Dispatcher::getInstance()->disableView();
+        $dataObj = new ExportModel();
+        p($dataObj->selectdata());
 
     }
 }
